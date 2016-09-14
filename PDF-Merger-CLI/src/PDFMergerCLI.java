@@ -18,11 +18,14 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
+import com.itextpdf.io.IOException;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfReader;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.kernel.utils.PdfMerger;
+
 import java.io.File;
 import java.util.Scanner;
-import com.itextpdf.io.IOException;
-import com.itextpdf.kernel.pdf.*;
-import com.itextpdf.kernel.utils.*;
 
 public class PDFMergerCLI
 {
@@ -39,17 +42,20 @@ public class PDFMergerCLI
         //Prompts for the file path to the first PDF to be merged (Front Page)
         System.out.print("Please enter the file path to the first pdf: ");
         src1 = stdIn.nextLine().toString();
+        src1 = src1.replace("\\","\\\\");
         //System.out.println(src1); //this was a test statement
 
         //Prompts for the file path to the second PDF to be merged (Back Page)
         System.out.print("Please enter the file path to the second pdf: ");
         src2 = stdIn.nextLine().toString();
+        src2 = src2.replace("\\", "\\\\");
         //System.out.println(src2); //this was a test statement
 
         //Prompts for the file path to the destination of the merged document
         //must include filename of the merged document
         System.out.print("Please enter the file path to the destination pdf: ");
         dest = stdIn.nextLine().toString();
+        dest = dest.replace("\\", "\\\\");
         //System.out.println(dest); //this was a test statement
 
         File file = new File(dest);
